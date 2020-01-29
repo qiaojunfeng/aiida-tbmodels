@@ -27,10 +27,12 @@
       "tbmodels.eigenvals = aiida_tbmodels.calculations.eigenvals:EigenvalsCalculation",
       "tbmodels.parse = aiida_tbmodels.calculations.parse:ParseCalculation",
       "tbmodels.slice = aiida_tbmodels.calculations.slice:SliceCalculation",
-      "tbmodels.symmetrize = aiida_tbmodels.calculations.symmetrize:SymmetrizeCalculation"
+      "tbmodels.symmetrize = aiida_tbmodels.calculations.symmetrize:SymmetrizeCalculation",
+      "tbmodels.dos = aiida_tbmodels.calculations.dos:DosCalculation"
     ],
     "aiida.parsers": [
-      "tbmodels.model = aiida_tbmodels.parsers.model:ModelParser"
+      "tbmodels.model = aiida_tbmodels.parsers.model:ModelParser",
+      "tbmodels.dos = aiida_tbmodels.parsers.dos:DosParser"
     ]
   },
   "include_package_data": true,
