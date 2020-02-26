@@ -35,4 +35,4 @@ class DosParser(Parser):
         except IOError:
             return self.exit_codes.ERROR_OUTPUT_DOS_FILE
 
-        self.out('output_dos', dos_node)
+        self.out('dos', dos_node)
