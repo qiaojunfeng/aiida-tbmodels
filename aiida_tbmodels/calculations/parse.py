@@ -57,10 +57,18 @@ class ParseCalculation(ModelOutputBase):
                                    self).prepare_for_submission(tempfolder)
 
         # add Wannier90 output files to local_copy_list
-        calcinfo.local_copy_list = [
+        # only copy relevant files to save disk space
+        _COPY_SUFFIXES = (
+            '.win', '.eig', '_centres.xyz', '_hr.dat',
+            '_tb.dat', '_r.dat', '.bvec', '_wsvec.dat'
+        )
+        filter_suffix = lambda f: f.endswith(_COPY_SUFFIXES)
+        filtered = filter(filter_suffix, wannier_folder.list_object_names())
+        local_copy_list = [
             (wannier_folder.uuid, filename, filename)
-            for filename in wannier_folder.list_object_names()
+            for filename in filtered
         ]
+        calcinfo.local_copy_list = local_copy_list
         codeinfo.cmdline_params = [
             'parse', '-p', prefix, '-o',
             self.inputs.metadata.options.output_filename, '--pos-kind',
